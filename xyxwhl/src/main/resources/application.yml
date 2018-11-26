@@ -1,0 +1,23 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    url: jdbc:mysql://47.106.136.157:3306/wh
+    username: root
+    password: root1126
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  type-aliases-package: com.wh.xyxwhl.web.model
+  mapper-locations: classpath:com/wh/xyxwhl/web/mapper/*.xml
+fdfs:
+  so-timeout: 60 #读取超时时间
+  connect-timeout: 600  #连接超时时间
+  pool:
+    jmx-enabled: false
+  thumb-image:
+    width: 100
+    height: 100
+  tracker-list: 47.106.136.157:22122
+  web-server-url: 47.106.136.157/
+image:
+  server: http://47.106.136.157/
