@@ -1,8 +1,8 @@
 package com.wh.xyxwhl.web.model;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class Photo implements Serializable {
+public class Photo {
     private Integer id;
 
     private String photoName;
@@ -12,6 +12,12 @@ public class Photo implements Serializable {
     private String description;
 
     private Integer loveFlag;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Byte flag;
 
     public Integer getId() {
         return id;
@@ -51,5 +57,29 @@ public class Photo implements Serializable {
 
     public void setLoveFlag(Integer loveFlag) {
         this.loveFlag = loveFlag;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Byte getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Byte flag) {
+        this.flag = flag;
     }
 }

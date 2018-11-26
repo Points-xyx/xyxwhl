@@ -22,21 +22,21 @@
         </javaTypeResolver>
 
         <!-- 实体类生成的位置 -->
-        <javaModelGenerator targetPackage="com.wh.xyxwhl.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.wh.xyxwhl.web.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- *Mapper.xml 文件的位置 -->
-        <sqlMapGenerator targetPackage="com.wh.xyxwhl.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.wh.xyxwhl.web.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- Mapper 接口文件的位置 -->
-        <javaClientGenerator targetPackage="com.wh.xyxwhl.dao" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.wh.xyxwhl.web.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="message" domainObjectName="Message" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

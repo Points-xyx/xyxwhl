@@ -7,6 +7,131 @@
     <result column="photo_address" jdbcType="VARCHAR" property="photoAddress" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="love_flag" jdbcType="INTEGER" property="loveFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="flag" jdbcType="TINYINT" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, photo_name, photo_address, description, love_flag, create_time, update_time, 
+    flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_photo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_photo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wh.xyxwhl.web.model.Photo">
+    insert into t_photo (id, photo_name, photo_address, 
+      description, love_flag, create_time, 
+      update_time, flag)
+    values (#{id,jdbcType=INTEGER}, #{photoName,jdbcType=VARCHAR}, #{photoAddress,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{loveFlag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{flag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wh.xyxwhl.web.model.Photo">
+    insert into t_photo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="photoName != null">
+        photo_name,
+      </if>
+      <if test="photoAddress != null">
+        photo_address,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="loveFlag != null">
+        love_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="photoName != null">
+        #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="photoAddress != null">
+        #{photoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="loveFlag != null">
+        #{loveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wh.xyxwhl.web.model.Photo">
+    update t_photo
+    <set>
+      <if test="photoName != null">
+        photo_name = #{photoName,jdbcType=VARCHAR},
+      </if>
+      <if test="photoAddress != null">
+        photo_address = #{photoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="loveFlag != null">
+        love_flag = #{loveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wh.xyxwhl.web.model.Photo">
+    update t_photo
+    set photo_name = #{photoName,jdbcType=VARCHAR},
+      photo_address = #{photoAddress,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      love_flag = #{loveFlag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wh.xyxwhl.web.model.Photo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="photo_name" jdbcType="VARCHAR" property="photoName" />
+    <result column="photo_address" jdbcType="VARCHAR" property="photoAddress" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="love_flag" jdbcType="INTEGER" property="loveFlag" />
   </resultMap>
   <sql id="Base_Column_List">
     id, photo_name, photo_address, description, love_flag
@@ -18,11 +143,11 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="getPhoto"  resultMap="BaseResultMap">
+  <select id="getPhoto" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_photo
-    <if test="pageIndex != null and pageIndex > 0 and pageSize != null and pageSize > 0">
+    <if test="pageIndex != null and pageIndex &gt; 0 and pageSize != null and pageSize &gt; 0">
       limit #{pageIndex,jdbcType=INTEGER} , #{pageSize,jdbcType=INTEGER}
     </if>
   </select>
@@ -74,7 +199,7 @@
     </trim>
   </insert>
 
-  <insert id="addPhoto" parameterType="com.wh.xyxwhl.web.model.Photo" useGeneratedKeys="true" keyProperty="id">
+  <insert id="addPhoto" keyProperty="id" parameterType="com.wh.xyxwhl.web.model.Photo" useGeneratedKeys="true">
     insert into t_photo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

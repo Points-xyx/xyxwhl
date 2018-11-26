@@ -1,8 +1,8 @@
 package com.wh.xyxwhl.web.model;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class Message implements Serializable {
+public class Message {
     private Integer id;
 
     private Integer userId;
@@ -10,6 +10,8 @@ public class Message implements Serializable {
     private Integer photoId;
 
     private String message;
+
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -41,5 +43,13 @@ public class Message implements Serializable {
 
     public void setMessage(String message) {
         this.message = message == null ? null : message.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

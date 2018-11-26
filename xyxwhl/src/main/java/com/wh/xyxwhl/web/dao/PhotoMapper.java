@@ -1,15 +1,17 @@
 package com.wh.xyxwhl.web.dao;
 
 import com.wh.xyxwhl.web.model.Photo;
-import org.mybatis.spring.annotation.MapperScan;
 
-import java.util.HashMap;
-import java.util.List;
+public interface PhotoMapper {
+    int deleteByPrimaryKey(Integer id);
 
-@MapperScan
-public interface PhotoMapper  extends IBaseDao<Photo> {
+    int insert(Photo record);
 
-    void addPhoto(Photo photo);
+    int insertSelective(Photo record);
 
-    List<Photo> getPhoto(HashMap<String, Object> map);
+    Photo selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Photo record);
+
+    int updateByPrimaryKey(Photo record);
 }
