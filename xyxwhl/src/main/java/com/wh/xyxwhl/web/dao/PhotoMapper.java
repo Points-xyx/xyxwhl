@@ -2,16 +2,9 @@ package com.wh.xyxwhl.web.dao;
 
 import com.wh.xyxwhl.web.model.Photo;
 
-public interface PhotoMapper {
-    int deleteByPrimaryKey(Integer id);
+import java.util.HashMap;
+import java.util.List;
 
-    int insert(Photo record);
-
-    int insertSelective(Photo record);
-
-    Photo selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Photo record);
-
-    int updateByPrimaryKey(Photo record);
+public interface PhotoMapper extends IBaseDao<Photo>{
+    List<Photo> getPhoto(HashMap<String,Object> map);
 }
