@@ -25,10 +25,6 @@ public class PersonController {
         return "login";
     }
 
-    @RequestMapping(method = RequestMethod.GET,path = "/toIndex")
-    public String toIndex(){
-        return "index";
-    }
 
     @RequestMapping(method = RequestMethod.POST,path = "/person/submitLogin")
     @ResponseBody

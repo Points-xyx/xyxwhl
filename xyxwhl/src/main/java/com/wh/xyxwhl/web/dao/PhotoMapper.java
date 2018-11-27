@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PhotoMapper extends IBaseDao<Photo>{
     List<Photo> getPhoto(HashMap<String,Object> map);
+
+    void addPhoto(Photo photo);
 }
